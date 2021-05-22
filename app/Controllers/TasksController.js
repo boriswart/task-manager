@@ -17,7 +17,6 @@ export class TasksController {
         event.preventDefault()
         let form = event.target
         console.log("Adding a Task", form.name.value, listId)
-        debugger
         let newTask = new Task(form.name.value, false, listId)
         ProxyState.tasks.push(newTask)
         ProxyState.lists = ProxyState.lists
@@ -28,4 +27,9 @@ export class TasksController {
     drawTasks() {
         console.log("Drawing the Tasks")
     }
+
+    removeTask(taskId) {
+        console.log("Removing the Tasks", taskId)
+    }
+
 }

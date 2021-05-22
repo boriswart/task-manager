@@ -6245,6 +6245,11 @@ button.bg-dark:focus {
   display: flex !important;
 }
 
+.d-flex.sb {
+  display: flex !important;
+  justify-content: space-between;
+}
+
 .d-inline-flex {
   display: inline-flex !important;
 }

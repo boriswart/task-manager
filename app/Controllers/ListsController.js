@@ -25,28 +25,26 @@ export class ListsController {
         ProxyState.lists.forEach(i => {
             template += /*html*/`
             <div class="card col-4 my-4">
-               <div class="card-body">
+               <div class="card-body text-center">
                 <h5 class="card-title">${i.name}</h5>
-                <p class="card-text">
-                <br>
+                <p class="card-text">------------
                 </p>
                     <div>
-                       <ul>
                      `
             ProxyState.tasks.forEach(t => {
-                template += /*html*/`               
-                ${t.listId == i.listId ? '<li>' + t.name + '</li>' : ""} 
-                `
+                template += /*html*/`
+                            ${t.listId == i.listId ? '<div class="d-flex sb"><ul><li>' + t.name + '</li></ul>' : ""}
+                            ${t.listId == i.listId ? '<i class="fa fa-recycle" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
+                            ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}`
             })
 
             template += /*html*/`
-                       </ul>
-                    </div>
-                    <div class="d-flex" >
-                       <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
-                          <input type="text" class="no-outline" id="newtask" name="name" required>
-                          <label class="text " for="newtask"></label>
-                          <button type="submit" class="btn btn-primary">+</button>
+                    </div >
+                <div class="d-flex" >
+                    <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
+                        <input type="text" class="no-outline" id="newtask" name="name" required>
+                            <label class="text " for="newtask"></label>
+                            <button type="submit" class="btn btn-primary">+</button>
                         </form>
                     </div>
                 </div >

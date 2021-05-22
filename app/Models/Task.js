@@ -3,6 +3,6 @@ export class Task {
         this.name = name;
         this.done = done;
         this.listId = listId
-        this.taskId = taskId || ("task" + Math.floor(Math.random() * 100))
+        this.taskId = taskId || ("tsk" + Math.floor(Math.random() * 1000))
     }
 }
