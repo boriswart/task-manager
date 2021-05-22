@@ -6250,6 +6250,11 @@ button.bg-dark:focus {
   justify-content: space-between;
 }
 
+.vam {
+  vertical-align:middle;
+}
+
+
 .d-inline-flex {
   display: inline-flex !important;
 }

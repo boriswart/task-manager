@@ -21,7 +21,6 @@ export class TasksController {
         ProxyState.tasks.push(newTask)
         ProxyState.lists = ProxyState.lists
         form.reset
-
     }
 
     drawTasks() {
@@ -30,6 +29,18 @@ export class TasksController {
 
     removeTask(taskId) {
         console.log("Removing the Tasks", taskId)
+        let keeperTasks = ProxyState.tasks.filter(x => x.taskId !== taskId)
+        ProxyState.tasks = keeperTasks
+        ProxyState.lists = ProxyState.lists
     }
 
+    updateTask(taskId, doneChk) {
+        debugger
+        //let allOtherTasks = ProxyState.tasks.filter(x => x.taskId !== taskId)
+        let foundTask = ProxyState.tasks.find(x => x.taskId == taskId)
+        console.log("Updating the Tasks", taskId, doneChk, ProxyState.tasks)
+        foundTask.done ? foundTask.done = false : foundTask.done = true //toggle every click
+        console.log("Updated  Tasks", foundTask)
+        ///ProxyState.lists = ProxyState.lists
+    }
 }

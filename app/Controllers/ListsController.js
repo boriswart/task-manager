@@ -30,11 +30,20 @@ export class ListsController {
                 <p class="card-text">------------
                 </p>
                     <div>
-                     `
+                    `
             ProxyState.tasks.forEach(t => {
                 template += /*html*/`
-                            ${t.listId == i.listId ? '<div class="d-flex sb"><ul><li>' + t.name + '</li></ul>' : ""}
-                            ${t.listId == i.listId ? '<i class="fa fa-recycle" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
+                            ${t.listId == i.listId ? '<!--Crazy Hard! -->' : ""}
+                            ${t.listId == i.listId ? '<div class="d-flex sb align-items-center">' : ""}
+
+                            ${t.listId == i.listId ? '<input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.TasksController.updateTask(' : ""}
+                            ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
+                            ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
+
+                            ${t.listId == i.listId ? '<label class="checkbox" for="donechk"></label>' : ""}
+
+                            ${t.listId == i.listId ? t.name : ""}
+                            ${t.listId == i.listId ? '<i class="fa fa-trash" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
                             ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}`
             })
 
