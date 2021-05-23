@@ -1,6 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { Task } from "../Models/Task.js";
-//import { TasksService } from "../Services/TasksService.js"
+import { loadState } from "../Utils/LocalStorage.js";
 
 //Private
 
@@ -11,6 +11,7 @@ export class TasksController {
     constructor() {
         ProxyState.on("tasks", this.drawTasks)
         this.drawTasks()
+        loadState()
     }
 
     addTask(event, listId) {
@@ -35,7 +36,6 @@ export class TasksController {
     }
 
     updateTask(taskId, doneChk) {
-        debugger
         //let allOtherTasks = ProxyState.tasks.filter(x => x.taskId !== taskId)
         let foundTask = ProxyState.tasks.find(x => x.taskId == taskId)
         console.log("Updating the Tasks", taskId, doneChk, ProxyState.tasks)

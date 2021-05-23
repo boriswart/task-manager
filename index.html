@@ -25,10 +25,10 @@
 
 
         <div id="app"></div>
-        <div class="container">
+        <div class="container-fluids">
 
             <div class="top-screen center ">
-                <div id="cards-go-here" class="row m-auto d-flex align-text-center">
+                <div id="cards-go-here" class="row m-auto d-flex justify-content-around">
                     <!--        task lists go here      -->
                     <div class="card col-4 my-4">
                         <div class="card-body">
@@ -39,10 +39,26 @@
                         </div>
                     </div>
 
-
-
                 </div>
             </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-4 offset-8 ">
+                        <form onsubmit="app.ListsController.addList(event)">
+                            <div class="d-flex sb">
+                                <input type="text" class="no-outline" minlength="3" maxlength="13" size="10"
+                                    id="newlist" name="name" required>
+                                <label class="text " for="newtask"></label>
+                                <input type="color" class="no-outline" id="color" name="color">
+                                <label class="color" for="color"></label>
+                                <button type="submit" class="btn btn-primary">+</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
     <footer class="container-fluid bg-dark text-light">

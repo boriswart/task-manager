@@ -1,7 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { List } from "../Models/List.js"
 import { loadState } from "../Utils/LocalStorage.js"
-import { listsService } from "../Services/ListService.js"
+import { listsService } from "../Services/ListsService.js"
 
 //Private
 

@@ -1,8 +1,8 @@
 export class List {
-    constructor(name, tasks, listId) {
+    constructor(name, color, listId) {
 
         this.name = name;
-        this.done = tasks;
+        this.color = color;
         this.listId = listId || ("lst" + Math.floor(10000 * Math.random()))
 
     }
