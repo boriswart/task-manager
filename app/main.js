@@ -5,5 +5,5 @@ class App {
   TasksController = new TasksController();
   ListsController = new ListsController();
 }
-
+debugger
 window["app"] = new App();

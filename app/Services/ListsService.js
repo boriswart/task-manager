@@ -7,7 +7,6 @@ import { saveState } from "../Utils/LocalStorage.js"
 class ListsService {
     constructor() {
         ProxyState.on('lists', saveState)
-        ProxyState.on('tasks', saveState)
     }
 
     createList(name, color) {
