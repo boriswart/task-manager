@@ -24,8 +24,7 @@ export class TasksController {
     }
 
     drawTasks() {
-        console.log("Drawing the is to force list controler ListController")
-        ProxyState.lists = ProxyState.lists
+        console.log("Drawing Tasks from ListController not here")
     }
 
     removeTask(taskId) {

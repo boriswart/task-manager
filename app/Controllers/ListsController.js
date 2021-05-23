@@ -21,7 +21,7 @@ export class ListsController {
         let form = event.target
         console.log("Adding a List", form.name.value)
         listsService.createList(form.name.value, form.color.value)
-        form.reset
+        form.reset()
     }
 
     removeList(listId) {
@@ -34,16 +34,15 @@ export class ListsController {
 
 
     drawLists() {
-        console.log("Drawing the list")
+        console.log("Drawing the list", ProxyState.lists)
         let template = ''
-
         ProxyState.lists.forEach(i => {
             template += /*html*/`
             <div class="card col-4 mt-4">
                <div class="card-body text-center">
-                <h5 class="card-title">${i.name}</h5>
-                <p class="card-text ">------------
-                </p>
+                    <h5 class="card-title">${i.name}</h5>
+                    <p class="card-text ">------------
+                    </p>
                     <div>
                     `
             ProxyState.tasks.forEach(t => {
@@ -59,19 +58,20 @@ export class ListsController {
             })
 
             template += /*html*/`
-                    </div >
+                    </div>
                     <div class="d-flex" >
                         <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
                             <div class="d-flex sb">    
-                                <input type="text" class="no-outline"  minlength="3" maxlength="50" size="10" id="newtask${i.listId}" name="name" required>
+                                <input type="text" class="no-outline"  minlength="3" maxlength="50" size="10" id="newtask${i.listId}" name="name" required/>
                                 <label class="text " for="newtask"></label>
                                 <button type="submit" class="btn btn-primary">+</button>
                                 <i class="fa fa-trash" aria-hidden="true" onclick="app.ListsController.removeList('${i.listId}')"></i>
                             </div>
                         </form>
                     </div>
+                </div >
             </div >
-        </div > `
+             `
         })
         document.getElementById("cards-go-here").innerHTML = template
     }

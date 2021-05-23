@@ -6,7 +6,7 @@ import { saveState } from "../Utils/LocalStorage.js"
 
 class TasksService {
     constructor() {
-        //ProxyState.on('tasks', saveState)
+        ProxyState.on('tasks', saveState)
     }
 
     createTask(name, listId) {
