@@ -1,7 +1,6 @@
 import { ProxyState } from "../AppState.js"
-import { List } from "../Models/List.js"
-import { loadState } from "../Utils/LocalStorage.js"
 import { listsService } from "../Services/ListsService.js"
+import { loadState } from "../Utils/LocalStorage.js"
 
 //Private
 
@@ -12,6 +11,7 @@ import { listsService } from "../Services/ListsService.js"
 export class ListsController {
     constructor() {
         ProxyState.on("lists", this.drawLists)
+        ProxyState.on('tasks', this.drawLists)
         this.drawLists()
         loadState()
     }

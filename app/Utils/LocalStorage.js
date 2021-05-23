@@ -2,16 +2,6 @@ import { ProxyState } from "../AppState.js";
 import { List } from "../Models/List.js";
 import { Task } from "../Models/Task.js";
 
-export function saveState() {
-    localStorage.setItem('TaskManager', JSON.stringify(
-        {
-            lists: ProxyState.lists,
-            tasks: ProxyState.tasks
-        }
-    ))
-    console.log('saved ', ProxyState)
-}
-
 export function loadState() {
 
     let data = JSON.parse(localStorage.getItem('TaskManager'))
@@ -23,5 +13,13 @@ export function loadState() {
             ProxyState.tasks.push(new Task(data.tasks[t].name, data.tasks[t].done, data.tasks[t].listId, data.tasks[t].taskId))
         }
     }
-
+}
+export function saveState() {
+    localStorage.setItem('TaskManager', JSON.stringify(
+        {
+            lists: ProxyState.lists,
+            tasks: ProxyState.tasks
+        }
+    ))
+    console.log('saved ', ProxyState)
 }
