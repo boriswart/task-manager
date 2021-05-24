@@ -5,6 +5,10 @@ import { loadState } from "../Utils/LocalStorage.js";
 
 //Private
 
+//swal("Are you sure?", {
+//    dangerMode: true,
+//    //buttons: true,
+//});
 
 
 //Public
@@ -27,9 +31,13 @@ export class TasksController {
         console.log("Drawing Tasks from ListController not here")
     }
 
+
+
     removeTask(taskId) {
-        console.log("Removing the Tasks", taskId)
-        tasksService.deleteTask(taskId)
+        if (confirm(`Are you sure you would like to delete task ${taskId} ?`)) {
+            console.log("Removing the Tasks", taskId)
+            tasksService.deleteTask(taskId)
+        }
     }
 
     updateTask(taskId, doneChk) {

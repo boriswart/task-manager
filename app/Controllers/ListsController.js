@@ -26,21 +26,30 @@ export class ListsController {
 
     removeList(listId) {
         console.log("Removing the List", listId)
-        let keeperLists = ProxyState.lists.filter(x => x.listId !== listId)
-        ProxyState.lists = keeperLists
-        ProxyState.lists = ProxyState.lists
-        // TODO tremove  tasks with listID
+        if (confirm(`Are you sure you would like to delete list ${listId} ?`)) {
+            let keeperLists = ProxyState.lists.filter(x => x.listId !== listId)
+            ProxyState.lists = keeperLists
+            ProxyState.lists = ProxyState.lists
+        }
     }
 
 
     drawLists() {
         console.log("Drawing the list", ProxyState.lists)
+        let filteredTasks
+        let numTasks = 0
+        let completedTasks = 0
+
         let template = ''
         ProxyState.lists.forEach(i => {
+            filteredTasks = ProxyState.tasks.filter(x => x.listId == i.listId)
+            numTasks = filteredTasks.length
+            completedTasks = filteredTasks.filter(x => x.done == true).length
             template += /*html*/`
             <div class="card col-4 mt-4 text-center">
             <div class="card-header bg-light' ">
             <p style="color:${i.color};font-size:24px;">${i.name}</p>
+            <p style="color:${i.color};font-size:14px;">${completedTasks}/${numTasks} </p>
             </div>
                <div class="card-body text-center text-color-#9d2525">
                     <p class="card-text "></p>
@@ -48,7 +57,7 @@ export class ListsController {
                     `
             ProxyState.tasks.forEach(t => {
                 template += /*html*/`
-                        ${t.listId == i.listId ? '<div class="d-flex sb align-items-center justify-content-around">' : ""}
+                        ${t.listId == i.listId ? '<div class="d-flex flex-wrap sb align-items-center justify-content-around">' : ""}
                         ${t.listId == i.listId ? '<input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.TasksController.updateTask(' : ""}
                         ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
                         ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
