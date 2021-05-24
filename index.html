@@ -9,6 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/style/main.css">
     <link rel="stylesheet" href="./assets/style/fontawesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Task-Manager</title>
 </head>
 
@@ -17,7 +18,7 @@
         <nav class="navbar navbar-purple navbar-expand bg-dark text-light">
             <a class="navbar-brand" href="#">
 
-                <span class="ml-2">task-manager</span>
+                <span class="ml-2">Task-Manager</span>
             </a>
         </nav>
     </header>
@@ -48,7 +49,7 @@
                         <form onsubmit="app.ListsController.addList(event)">
                             <div class="d-flex sb">
                                 <input type="text" class="no-outline" minlength="3" maxlength="13" size="10"
-                                    id="newlist" name="name" required>
+                                    id="newlist" name="name" required>new Task List and color:
                                 <label class="text " for="newtask"></label>
                                 <input type="color" class="no-outline" id="color" name="color">
                                 <label class="color" for="color"></label>
@@ -68,7 +69,7 @@
             </div>
         </div>
     </footer>
-
+    <script> $()</script>
     <script src="app/main.js" type="module"></script>
 </body>
 
