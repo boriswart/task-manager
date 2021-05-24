@@ -6,4 +6,4 @@ class App {
   ListsController = new ListsController();
 }
 window["app"] = new App();
-debugger
+

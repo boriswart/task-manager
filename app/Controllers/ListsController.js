@@ -38,11 +38,12 @@ export class ListsController {
         let template = ''
         ProxyState.lists.forEach(i => {
             template += /*html*/`
-            <div class="card col-4 mt-4">
-               <div class="card-body text-center">
-                    <h5 class="card-title">${i.name}</h5>
-                    <p class="card-text ">------------
-                    </p>
+            <div class="card col-4 mt-4 text-center">
+            <div class="card-header bg-light' ">
+            <p style="color:${i.color};font-size:24px;">${i.name}</p>
+            </div>
+               <div class="card-body text-center text-color-#9d2525">
+                    <p class="card-text "></p>
                     <div>
                     `
             ProxyState.tasks.forEach(t => {
@@ -52,20 +53,20 @@ export class ListsController {
                         ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
                         ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
                         ${t.listId == i.listId ? '<label class="checkbox" for="donechk"></label>' : ""}
-                        ${t.listId == i.listId ? t.name : ""}
+                        ${t.listId == i.listId ? '<p style="color:' + i.color + ';font-size:12px;">' + t.name + '"</p>' : ""}
                         ${t.listId == i.listId ? '<i class="fa fa-trash" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
                         ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}`
             })
 
             template += /*html*/`
                     </div>
-                    <div class="d-flex" >
+                    <div class="d-flex sb" >
                         <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
-                            <div class="d-flex sb">    
-                                <input type="text" class="no-outline"  minlength="3" maxlength="50" size="10" id="newtask${i.listId}" name="name" required/>
-                                <label class="text " for="newtask"></label>
-                                <button type="submit" class="btn btn-primary">+</button>
-                                <i class="fa fa-trash" aria-hidden="true" onclick="app.ListsController.removeList('${i.listId}')"></i>
+                            <div class="d-flex align-content-center justify-content-around">    
+                                <div><input type="text" class="no-outline"  minlength="3" maxlength="50" size="10" id="newtask${i.listId}" name="name" required/>
+                                <label class="text " for="newtask"></label></div>
+                                <div><button type="submit" class="btn btn-primary">+</button></div>
+                                <div><span><i class="fa fa-trash" aria-hidden="true" onclick="app.ListsController.removeList('${i.listId}')"></i></span></div>
                             </div>
                         </form>
                     </div>
