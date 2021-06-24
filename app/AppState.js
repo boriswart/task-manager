@@ -6,10 +6,10 @@ import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
-  tasks = []
+  tasks = [new Task("Clean Room", false, "lst1", "tsk1")]
 
   /** @type {List[]} */
-  lists = []
+  lists = [new List("Gonna do it", '#f03003' , "lst1")]
 }
 
 export const ProxyState = new Proxy(new AppState(), {

@@ -51,37 +51,43 @@ export class ListsController {
             <p style="color:${i.color};font-size:24px;">${i.name}</p>
             <p style="color:${i.color};font-size:14px;">${completedTasks}/${numTasks} </p>
             </div>
-               <div class="card-body text-center text-color-#9d2525">
-                    <p class="card-text "></p>
-                    <div>
-                    `
+            <div class="card-body text-center text-color-#9d2525">
+            <p class="card-text "></p>
+            <div>
+            `
             ProxyState.tasks.forEach(t => {
                 template += /*html*/`
-                        ${t.listId == i.listId ? '<div class="d-flex flex-wrap sb align-items-center justify-content-around">' : ""}
-                        ${t.listId == i.listId ? '<input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.TasksController.updateTask(' : ""}
-                        ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
-                        ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
-                        ${t.listId == i.listId ? '<label class="checkbox" for="donechk"></label>' : ""}
-                        ${t.listId == i.listId ? '<p style="color:' + i.color + ';font-size:12px;">' + t.name + '"</p>' : ""}
-                        ${t.listId == i.listId ? '<i class="fa fa-trash" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
-                        ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}`
+                ${t.listId == i.listId ? '<div class="d-flex flex-wrap sb align-items-center justify-content-around">' : ""}
+                ${t.listId == i.listId ? '<input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.TasksController.updateTask(' : ""}
+                ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
+                ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
+                ${t.listId == i.listId ? '<label class="checkbox" for="donechk"></label>' : ""}
+                ${t.listId == i.listId ? '<span style="color:' + i.color + ';font-size:12px;">' + t.name + '"</span>' : ""}
+                ${t.listId == i.listId ? '<i class="fa fa-trash" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
+                ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}`
             })
-
+            
             template += /*html*/`
-                    </div>
-                    <div class="d-flex sb" >
-                        <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
-                            <div class="d-flex align-content-center justify-content-around">    
-                                <div><input type="text" class="no-outline"  minlength="3" maxlength="50" size="10" id="newtask${i.listId}" name="name" required/>
-                                <label class="text " for="newtask"></label></div>
-                                <div><button type="submit" class="btn btn-primary">+</button></div>
-                                <div><span><i class="fa fa-trash" aria-hidden="true" onclick="app.ListsController.removeList('${i.listId}')"></i></span></div>
-                            </div>
-                        </form>
-                    </div>
-                </div >
+            </div>
+            <div class="d-flex sb" >
+            <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
+            <div class="d-flex space-between  align-center">    
+            <div>
+            <span><i class="fa fa-trash" aria-hidden="true" onclick="app.ListsController.removeList('${i.listId}')"></i></span>
+            </div>
+            <div>
+            <input type="text" class="no-outline"  minlength="3" maxlength="50" size="10" id="newtask${i.listId}" name="name" required/>
+            <label class="text " for="newtask"></label>
+            </div>
+            <div>
+            <button type="submit" class="btn btn-primary">+</button>
+            </div>
+            </div>
+            </form>
+            </div>
             </div >
-             `
+            </div >
+            `
         })
         document.getElementById("cards-go-here").innerHTML = template
     }
