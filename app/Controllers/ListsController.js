@@ -57,19 +57,21 @@ export class ListsController {
             `
             ProxyState.tasks.forEach(t => {
                 template += /*html*/`
-                ${t.listId == i.listId ? '<div class="d-flex flex-wrap sb align-items-center justify-content-around">' : ""}
+                ${t.listId == i.listId ? '<div class="d-flex flex-wrap sb align-items-center">' : ""}
                 ${t.listId == i.listId ? '<input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.TasksController.updateTask(' : ""}
                 ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
                 ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
                 ${t.listId == i.listId ? '<label class="checkbox" for="donechk"></label>' : ""}
                 ${t.listId == i.listId ? '<span style="color:' + i.color + ';font-size:12px;">' + t.name + '"</span>' : ""}
                 ${t.listId == i.listId ? '<i class="fa fa-trash" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
-                ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}`
+                ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}
+                  `
             })
             
             template += /*html*/`
             </div>
-            <div class="d-flex sb" >
+            <br><br>
+            <div class="d-flex sb border m-auto" >
             <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
             <div class="d-flex space-between  align-center">    
             <div>
